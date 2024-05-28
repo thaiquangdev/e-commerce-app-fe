@@ -12,6 +12,7 @@
   "dependencies": {
     "@nextui-org/input": "^2.1.21",
     "@nextui-org/react": "^2.3.6",
+    "axios": "^1.7.2",
     "framer-motion": "^11.2.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

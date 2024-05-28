@@ -1,18 +1,22 @@
+import { useEffect, useState } from "react";
 import CategoryCard from "../CategoryCard";
 import Slider from "../Slider";
-
-const items = [
-  <CategoryCard title="iphone 1" />,
-  <CategoryCard title="iphone 2" />,
-  <CategoryCard title="iphone 3" />,
-  <CategoryCard title="iphone 4" />,
-  <CategoryCard title="iphone 5" />,
-  <CategoryCard title="iphone 6" />,
-  <CategoryCard title="iphone 7" />,
-  <CategoryCard title="iphone 8" />,
-];
+import { getCategories } from "../../services/api/categoryApi";
 
 const CategoryList = () => {
+  const [data, setData] = useState(null);
+  const fetchCategory = async () => {
+    const response = await getCategories();
+    if (response?.status === "success") {
+      setData(response?.categories);
+    }
+  };
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+  const items = data?.map((item) => (
+    <CategoryCard data={item} key={item?._id} />
+  ));
   return (
     <div>
       <h2 className="font-bold text-md text-primary-color py-3">Categories</h2>
