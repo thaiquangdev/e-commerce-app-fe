@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { getCategories } from "../../services/api/categoryApi";
 import CategoryCard from "../CategoryCard";
 import Slider from "../Slider";
-import { getCategories } from "../../services/api/categoryApi";
 
 const CategoryList = () => {
   const [data, setData] = useState(null);
