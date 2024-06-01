@@ -1,24 +1,22 @@
 import { Input } from "@nextui-org/input";
-import { useState } from "react";
-import { icons } from "../../utils/icons";
-import { Link, useNavigate } from "react-router-dom";
-import { apiLogin } from "../../services/api/authApi";
-const { FaRegEye, FaRegEyeSlash } = icons;
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { resetPasswordApi } from "../../services/api/userApi";
 import toast from "react-hot-toast";
-import withAuthRedirect from "../../hocs/withAuthRedirect";
+import { icons } from "../../utils/icons";
+const { FaRegEye, FaRegEyeSlash } = icons;
 
-const Login = () => {
+const ResetPassword = () => {
+  const { token } = useParams();
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handlelogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await apiLogin({ email, password });
+    const response = await resetPasswordApi({ password }, token);
     if (response.status === "success") {
       toast.success(response.message);
-      localStorage.setItem("token", response.token);
-      navigate("/");
+      navigate("/login");
     }
     if (response.status === "error") {
       toast.error(response.message);
@@ -27,22 +25,9 @@ const Login = () => {
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
       <div className="h-screen flex items-center justify-center">
-        <form
-          className="w-[300px] xl:w-[400px] rounded-md shadow-[0px_3px_10px_rgb(0,0,0,0.2)] p-4 xl:p-6"
-          onSubmit={handlelogin}
-        >
-          <h1 className="text-2xl font-bold text-center">Login</h1>
-          <p className="pt-2 text-sm text-center">
-            Hey, Enter your details to get sign in to your account
-          </p>
-          <div className="pt-4">
-            <Input
-              type="email"
-              label="Email"
-              placeholder="Enter your email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+        <form action="" className="w-[300px]" onSubmit={handleSubmit}>
+          <h1 className="text-2xl font-bold text-center">Reset Password</h1>
+          <p className="pt-2 text-sm text-center">Enter your new password</p>
           <div className="pt-4">
             <Input
               type={isVisible ? "text" : "password"}
@@ -63,23 +48,13 @@ const Login = () => {
               }
             />
           </div>
-          <div className="pt-4 text-sm italic">
-            <Link className="underline text-sm" to="/forgot-password">
-              Forgot password.
-            </Link>
-          </div>
           <div className="pt-4 ">
             <button
               type="submit"
               className="text-xl font-bold bg-primary-color w-full text-white h-10 rounded-md"
             >
-              Sign in
+              Reset Password
             </button>
-          </div>
-          <div className="pt-4 text-sm italic">
-            <Link to="/register" className="underline text-sm">
-              Have you not account.Sign up
-            </Link>
           </div>
         </form>
       </div>
@@ -87,4 +62,4 @@ const Login = () => {
   );
 };
 
-export default withAuthRedirect(Login);
+export default ResetPassword;

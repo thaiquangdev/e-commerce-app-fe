@@ -7,6 +7,8 @@ import Register from "./pages/Register";
 import { Toaster } from "react-hot-toast";
 import ProductList from "./pages/ProductList";
 import ProductDetail from "./pages/ProductDetail";
+import ForgotPassword from "./pages/FotgotPassword/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path={path.LOGIN} element={<Login />} />
           <Route path={path.REGISTER} element={<Register />} />
+          <Route path={path.FORGOT_PASSWORD} element={<ForgotPassword />} />
+          <Route path={path.RESET_PASSWORD} element={<ResetPassword />} />
           <Route path={path.PRODUCTS_LIST} element={<ProductList />} />
           <Route path={path.PRODUCTS_DETAIL} element={<ProductDetail />} />
         </Route>
