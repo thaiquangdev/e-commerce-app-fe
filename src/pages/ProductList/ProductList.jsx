@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { getProductsApi } from "../../services/api/productApi";
+import FilterProduct from "../../components/FilterProduct";
 
 const ProductList = () => {
   const [productsData, setProductsData] = useState(null);
-  console.log(productsData);
   const fetchProducts = async () => {
     const response = await getProductsApi();
     if (response.status === "success") {
@@ -17,7 +17,12 @@ const ProductList = () => {
   }, []);
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
-      <div></div>
+      <div>
+        <h1 className="text-xl font-bold">Filter Product!</h1>
+        <div>
+          <FilterProduct />
+        </div>
+      </div>
       <div>
         <h1 className="text-xl font-bold">All Products For You!</h1>
         <div className="pt-4 flex flex-wrap gap-3 lg:gap-2">
