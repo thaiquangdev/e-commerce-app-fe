@@ -1,9 +1,10 @@
 import axios from "../../axios.config";
 
-export const getProductsApi = () =>
+export const getProductsApi = (params) =>
   axios({
     url: "http://localhost:5500/api/products/",
     method: "get",
+    params,
   });
 
 export const getProductApi = (param) =>

@@ -8,6 +8,8 @@ import {
   FaFacebookF,
   FaArrowCircleLeft,
   FaArrowCircleRight,
+  FaArrowLeft,
+  FaArrowRight,
 } from "react-icons/fa";
 import { FaXTwitter, FaInstagram, FaLinkedinIn, FaStar } from "react-icons/fa6";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -20,6 +22,8 @@ export const icons = {
   FaRegUser,
   FaRegHeart,
   FaRegEye,
+  FaArrowLeft,
+  FaArrowRight,
   FaRegEyeSlash,
   FaFacebookF,
   FaXTwitter,

@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { getProductsApi } from "../../services/api/productApi";
 import FilterProduct from "../../components/FilterProduct";
+import { useParams } from "react-router-dom";
+import Pagination from "../../components/Pagination";
 
 const ProductList = () => {
+  const { category } = useParams();
   const [productsData, setProductsData] = useState(null);
   const fetchProducts = async () => {
-    const response = await getProductsApi();
+    const response = await getProductsApi({ category });
     if (response.status === "success") {
       setProductsData(response.products);
     }
@@ -34,6 +37,13 @@ const ProductList = () => {
                 </div>
               );
             })}
+        </div>
+        <div className="mt-2 flex items-center justify-center">
+          <Pagination
+            total={productsData?.pages}
+            limit={productsData?.limit}
+            page={productsData?.page}
+          />
         </div>
       </div>
     </div>

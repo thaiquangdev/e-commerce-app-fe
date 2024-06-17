@@ -4,7 +4,7 @@ const CategoryCard = ({ data }) => {
   return (
     <div className="border border-gray-300 rounded-sm p-3">
       <Link
-        to={`/products/${data?.category}`}
+        to={`/${data?.category}`}
         className="flex flex-col items-center justify-center "
       >
         <img
