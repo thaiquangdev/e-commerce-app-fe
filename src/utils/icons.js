@@ -14,6 +14,7 @@ import {
 import { FaXTwitter, FaInstagram, FaLinkedinIn, FaStar } from "react-icons/fa6";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { HiDotsHorizontal } from "react-icons/hi";
+import { CiStar } from "react-icons/ci";
 
 export const icons = {
   IoMenu,
@@ -34,4 +35,5 @@ export const icons = {
   FaStar,
   MdOutlineShoppingCart,
   HiDotsHorizontal,
+  CiStar,
 };

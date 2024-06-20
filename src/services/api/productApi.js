@@ -12,3 +12,10 @@ export const getProductApi = (param) =>
     url: `http://localhost:5500/api/products/${param}`,
     method: "get",
   });
+
+export const ratingProductApi = (data) =>
+  axios({
+    url: "http://localhost:5500/api/rating/rating-product",
+    method: "post",
+    data,
+  });
